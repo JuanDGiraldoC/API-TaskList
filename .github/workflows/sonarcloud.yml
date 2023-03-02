@@ -1,0 +1,28 @@
+name: SonarCloud analysis
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+  Analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install libraries
+        run:
+          npm install lista_de_tareas --save
+        
+      - name: Analyze with SonarCloud
+        uses: SonarSource/sonarcloud-github-action@v1.8
+        with:
+          args: -Dsonar.organization=juandgiraldoc -Dsonar.projectKey=juandgiraldoc_api-tasklist -Dsonar.sources=. -Dsonar.host.url=https://sonarcloud.io
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_SECRET }}
+        
