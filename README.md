@@ -1,3 +1,5 @@
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=juandgiraldoc_api-tasklist)
+
 # lista_de_tareas
 
 ListaDeTareas - JavaScript client for lista_de_tareas
